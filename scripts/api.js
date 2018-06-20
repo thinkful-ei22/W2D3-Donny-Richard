@@ -12,18 +12,20 @@ const api = (function(){
 
   };
 
-  const updateItem = function (id,updateData,callback) {
+  const updateItem = function (id,updateData,callback,error) {
     $.ajax({
       url: `${BASE_URL}/items/${id}`,
       method: 'PATCH',
+      dataType: 'json',
       contentType: 'application/json',
       data: JSON.stringify(updateData),
-      success: callback
+      success: callback,
+      error:error
     });
 
   };
 
-  const createItem = function (name,callback){
+  const createItem = function (name,callback,error){
 
     let newItem= {
       name: name
@@ -38,10 +40,26 @@ const api = (function(){
       dataType: 'json',
       contentType: 'application/json',
       data: newItem,
-      success: callback
+      success: callback,
+      error:error
     });
 
   };
+
+
+  const deleteItem = function (id,callback,error){
+
+    $.ajax({
+      url: `${BASE_URL}/items/${id}`,
+      method: 'DELETE',
+      dataType: 'json',
+      contentType: 'application/json',
+      success: callback,
+      error:error
+    });
+
+  };
+
 
 
 
@@ -49,7 +67,8 @@ const api = (function(){
 
     getItems,
     createItem,
-    updateItem
+    updateItem,
+    deleteItem
   };
 
 

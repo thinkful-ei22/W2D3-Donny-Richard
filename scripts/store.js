@@ -1,10 +1,11 @@
+/*global store, cuid, Item, shoppingList, api*/
 'use strict';
 
 
 const store = (function () {
 
-  const foot = 'bar';  
   const items = [];
+  const error = null;
 
   const hideCheckedItems = false;
   const searchTerm = '';
@@ -18,11 +19,10 @@ const store = (function () {
   };
 
   const findAndUpdate = function (id, newData) {
-    const findItem = this.items.find(item => item.id === id);
-    const updateData = Object.assign(findItem,newData);
-    api.updateItem(id,updateData, () => {
-      console.log('updated!');
-    });
+    let foundItem = this.items.find(item => item.id === id);
+     const newItem = Object.assign(foundItem,newData);
+    
+  
   };
 
   const findAndDelete = function(id) {
@@ -33,12 +33,15 @@ const store = (function () {
   const toggleCheckedFilter= function(){
 
     this.hideCheckedItems = !this.hideCheckedItems;    
-  }
+  };
 
   const setSearchTerm = function(newSearchTerm){
     this.searchTerm = newSearchTerm;
-  }
+  };
 
+  const setError = function(message='There is a problem.'){
+    console.log(message);
+  };
 
 
 
@@ -51,7 +54,8 @@ const store = (function () {
     findAndDelete,
     toggleCheckedFilter,
     setSearchTerm,
-    findAndUpdate
+    findAndUpdate,
+    setError
   };
 
 }() );

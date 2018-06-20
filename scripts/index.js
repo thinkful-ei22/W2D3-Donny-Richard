@@ -3,7 +3,7 @@
 
 // eslint-disable-next-line no-unused-vars
 
-console.log(store.items);
+//console.log(store.items);
 
 
 $(document).ready(function () {
@@ -12,9 +12,11 @@ $(document).ready(function () {
   api.getItems((items) => {
 
     items.forEach((item) => store.addItem(item));
+    shoppingList.render();
   });
 
-  shoppingList.render();
+  
+ 
 });
 
 
