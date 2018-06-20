@@ -4,12 +4,7 @@
 const store = (function () {
 
   const foot = 'bar';  
-  const items = [
-    { id: cuid(), name: 'apples', checked: false },
-    { id: cuid(), name: 'oranges', checked: false },
-    { id: cuid(), name: 'milk', checked: true },
-    { id: cuid(), name: 'bread', checked: false }
-  ];
+  const items = [];
 
   const hideCheckedItems = false;
   const searchTerm = '';
@@ -22,21 +17,12 @@ const store = (function () {
     this.items.push(item);
   };
 
-  const findAndToggleChecked = function(id) {
-    const foundItem = this.findById(id);
-    console.log("yes");
-    console.log(foundItem);
-    foundItem.checked = !foundItem.checked;
-  };
-
-  const findAndUpdateName = function(id, newName) {
-    try {
-      Item.validateName(newName);
-      const foundItem = this.findById(id);
-      foundItem.name = newName;
-    } catch(error) {
-      console.log(`Cannot update name: ${error}`);
-    }
+  const findAndUpdate = function (id, newData) {
+    const findItem = this.items.find(item => item.id === id);
+    const updateData = Object.assign(findItem,newData);
+    api.updateItem(id,updateData, () => {
+      console.log('updated!');
+    });
   };
 
   const findAndDelete = function(id) {
@@ -62,11 +48,10 @@ const store = (function () {
     searchTerm,
     findById,
     addItem,
-    findAndToggleChecked,
-    findAndUpdateName,
     findAndDelete,
     toggleCheckedFilter,
-    setSearchTerm
+    setSearchTerm,
+    findAndUpdate
   };
 
 }() );

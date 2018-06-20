@@ -6,12 +6,14 @@
 console.log(store.items);
 
 
-$(document).ready(function() {
+$(document).ready(function () {
   shoppingList.bindEventListeners();
+
   api.getItems((items) => {
+
     items.forEach((item) => store.addItem(item));
-    shoppingList.render();
   });
+
   shoppingList.render();
 });
 
