@@ -40,7 +40,7 @@ const store = (function () {
   };
 
   const setError = function(message='There is a problem.'){
-    console.log(message);
+    window.alert(message);
   };
 
 

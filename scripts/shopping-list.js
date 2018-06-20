@@ -85,7 +85,7 @@ const shoppingList = (function(){
       api.createItem(newItemName, (newItem) => {
         store.addItem(newItem);
         render();
-      },() =>store.setError('bad4'));
+      },() =>store.setError('Submission Error : Empty Field'));
     });
   }
   
@@ -103,7 +103,7 @@ const shoppingList = (function(){
       foundItem.checked = !foundItem.checked; 
       const newObject = { checked : foundItem.checked};
     
-      api.updateItem(id,newObject, (data) => {store.findAndUpdate(id,newObject);render();},() =>store.setError('bad3'));
+      api.updateItem(id,newObject, () => {store.findAndUpdate(id,newObject);render();},() =>store.setError('Error with Checking Item'));
       //console.log(id);
       //store.findAndToggleChecked(id);
       //render();
@@ -121,7 +121,7 @@ const shoppingList = (function(){
         store.findAndDelete(id); 
         render();
       },
-      () => store.setError('bad'));
+      () => store.setError('Delete Item Problem'));
 
     });
   }
@@ -137,11 +137,11 @@ const shoppingList = (function(){
       const newName = $(event.currentTarget).find('.shopping-item').val();
       const newObject = { name: newName };
       // console.log(newObject);
-      api.updateItem(id,newObject, (data) =>  
+      api.updateItem(id,newObject, () =>  
       {
         store.findAndUpdate(id,newObject);
         render();
-      },() =>store.setError('bad2'));
+      },() =>store.setError('Problem Editing Item'));
       //store.findAndUpdate(id, newName);
      
     });
