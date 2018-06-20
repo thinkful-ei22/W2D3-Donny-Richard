@@ -1,4 +1,7 @@
-# W2D3-Donny-Richard
-Working with RESTful APIs
+# module-exercises-Donny-Morgan
+W2D1 Modules &amp; Namespacing
 
-https://github.com/rich-at-thinkful/ft-curric-gists/blob/master/fundamentals/restful-apis.md
+Monday Exercises:
+https://github.com/rich-at-thinkful/ft-curric-gists/blob/master/fundamentals/modules.md
+https://github.com/rich-at-thinkful/ft-curric-gists/blob/master/fundamentals/namespacing.md
+
